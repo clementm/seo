@@ -23,7 +23,7 @@
     var clock = 0;
 
     function startClockSignal () {
-      appendLine(root, 'Elapsed time : ' + (++clock) + 's');
+      appendLine(root, 'Elapsed time : ' + (clock++) + 's');
       setTimeout(startClockSignal, 1000);
     }
 
