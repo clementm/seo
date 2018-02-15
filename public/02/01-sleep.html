@@ -21,7 +21,7 @@
     http('/api/time', function () {
       appendLine(root, chrono(this.responseText));
       
-      sleep(5000);
+      sleep(30000);
 
       http('/api/time', function () {
         appendLine(root, chrono(this.responseText));
