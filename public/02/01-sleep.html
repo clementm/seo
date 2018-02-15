@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="jT9l1L3fM5UwDaXrRqk-0wmSdkfy1ah5MuOTyoU5S14" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="../moment.min.js"></script>
+  <script type="text/javascript" src="../utils.js"></script>
+  <title>JS Sleep</title>
+</head>
+
+<body>
+  <ul id="root"></ul>
+
+  <script type="text/javascript">
+    var chrono = startChrono();
+    var root = document.getElementById('root');
+    
+    http('/api/time', function () {
+      appendLine(root, chrono(this.responseText));
+      
+      sleep(5000);
+
+      http('/api/time', function () {
+        appendLine(root, chrono(this.responseText));
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -11,8 +11,6 @@ app.use(
   )
 );
 
-const chrono = () => moment().format('mm:ss:SSS');
-
 app.get('/api/random', (req, res) => {
   const delay = req.query.delay && parseInt(req.query.delay) || 0;
 
@@ -22,15 +20,15 @@ app.get('/api/random', (req, res) => {
 app.get('/api/time', (req, res) => {
   const delay = req.query.delay && parseInt(req.query.delay) || 0;
 
-  setTimeout(() => res.send(chrono()), delay);
+  setTimeout(() => res.send(moment().toISOString()), delay);
 });
 
 app.get('/api/lapse', (req, res) => {
   const delay = req.query.delay && parseInt(req.query.delay) || 0;
   
-  res.write(moment().format('mm:ss:SSS') + '\n');
+  res.write(moment().toISOString() + '\n');
   setTimeout(() => {
-    res.write(chrono());
+    res.write(moment().toISOString());
     res.end();
   }, delay);
 });
